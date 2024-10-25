@@ -1,0 +1,9 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" actionBarHidden="true">
+    <GridLayout class="bg-blue-600">
+        <StackLayout class="fade-in" horizontalAlignment="center" verticalAlignment="center">
+            <Label text="M" class="text-white font-bold text-6xl pulse" />
+            <Label text="Marketing Mastery" class="text-white font-bold text-2xl mt-4" />
+            <Label text="Your Marketing Journey Starts Here" class="text-white text-lg mt-2 opacity-80" />
+        </StackLayout>
+    </GridLayout>
+</Page>

@@ -1,0 +1,64 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar>
+        <GridLayout columns="*, auto">
+            <Label col="0" text="Learning Hub" class="font-bold text-lg" />
+            <Label col="1" text="🔍" class="text-2xl mr-4" tap="{{ onSearch }}" />
+        </GridLayout>
+    </ActionBar>
+
+    <GridLayout rows="auto, *">
+        <!-- Categories ScrollView -->
+        <ScrollView row="0" orientation="horizontal" class="p-2">
+            <StackLayout orientation="horizontal">
+                <Repeater items="{{ categories }}">
+                    <Repeater.itemTemplate>
+                        <GridLayout class="mx-2 p-4 rounded-xl" 
+                            backgroundColor="{{ isSelected ? '#2563eb' : '#f3f4f6' }}"
+                            tap="{{ $parent.onCategoryTap }}">
+                            <Label text="{{ name }}" 
+                                class="px-4" 
+                                color="{{ isSelected ? '#ffffff' : '#374151' }}" />
+                        </GridLayout>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Courses List -->
+        <ScrollView row="1">
+            <StackLayout class="p-4">
+                <!-- Continue Learning -->
+                <Label text="Continue Learning" class="text-xl font-bold mb-4" />
+                <GridLayout class="bg-white p-4 rounded-xl elevation-2 mb-6" rows="auto, auto, auto" 
+                    tap="{{ onContinueCourse }}">
+                    <Label row="0" text="{{ currentCourse.title }}" class="font-bold mb-2" />
+                    <Label row="1" text="{{ currentCourse.description }}" class="text-gray-600 mb-3" textWrap="true" />
+                    <GridLayout row="2" columns="*, auto">
+                        <Progress col="0" value="{{ currentCourse.progress }}" maxValue="100" class="m-2" />
+                        <Label col="1" text="{{ currentCourse.progress }}%" class="text-blue-600" />
+                    </GridLayout>
+                </GridLayout>
+
+                <!-- Course List -->
+                <Label text="Available Courses" class="text-xl font-bold mb-4" />
+                <Repeater items="{{ filteredCourses }}">
+                    <Repeater.itemTemplate>
+                        <GridLayout class="bg-white p-4 rounded-xl elevation-2 mb-4" rows="auto, auto, auto"
+                            tap="{{ $parent.onCourseTap }}">
+                            <GridLayout row="0" columns="auto, *, auto" class="mb-2">
+                                <Label col="0" text="{{ icon }}" class="text-2xl mr-2" />
+                                <Label col="1" text="{{ title }}" class="font-bold" />
+                                <Label col="2" text="{{ duration }}" class="text-gray-500" />
+                            </GridLayout>
+                            <Label row="1" text="{{ description }}" class="text-gray-600 mb-2" textWrap="true" />
+                            <GridLayout row="2" columns="auto, auto" class="mt-2">
+                                <Label col="0" text="{{ level }}" class="text-sm text-gray-500" />
+                                <Label col="1" text="{{ lessons.length }} lessons" class="text-sm text-gray-500 ml-4" />
+                            </GridLayout>
+                        </GridLayout>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>

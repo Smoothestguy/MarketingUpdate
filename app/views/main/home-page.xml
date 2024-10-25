@@ -1,0 +1,93 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar>
+        <GridLayout columns="*, auto, auto">
+            <Label col="0" text="Marketing Mastery" class="font-bold text-lg" />
+            <Label col="1" text="🔔" class="text-2xl mx-4" tap="{{ onNotifications }}" />
+            <Label col="2" text="👤" class="text-2xl mr-4" tap="{{ onProfile }}" />
+        </GridLayout>
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Welcome Section -->
+            <GridLayout rows="auto, auto" columns="*, auto" class="bg-blue-600 p-6 rounded-xl mb-6">
+                <Label row="0" col="0" text="{{ welcomeMessage }}" class="text-white text-xl font-bold" textWrap="true" />
+                <Label row="1" col="0" text="{{ dailyTip }}" class="text-white opacity-90 mt-2" textWrap="true" />
+                <Label row="0" rowSpan="2" col="1" text="📈" class="text-4xl" />
+            </GridLayout>
+
+            <!-- Featured Content -->
+            <Label text="Today's Lesson" class="text-lg font-bold mb-4" />
+            <GridLayout class="bg-white p-4 rounded-xl mb-6 elevation-2" rows="auto, auto, auto" tap="{{ onFeaturedLesson }}">
+                <Label row="0" text="{{ featuredLesson.title }}" class="font-bold mb-2" />
+                <Label row="1" text="{{ featuredLesson.description }}" class="text-gray-600 mb-3" textWrap="true" />
+                <GridLayout row="2" columns="*, auto">
+                    <Progress col="0" value="{{ featuredLesson.progress }}" maxValue="100" class="m-2" />
+                    <Label col="1" text="{{ featuredLesson.progress }}%" class="text-blue-600" />
+                </GridLayout>
+            </GridLayout>
+
+            <!-- Quick Actions -->
+            <Label text="Quick Actions" class="text-lg font-bold mb-4" />
+            <GridLayout columns="*, *" rows="auto, auto" class="mb-6">
+                <GridLayout col="0" row="0" class="bg-white p-4 m-1 rounded-xl elevation-2" tap="{{ onMarketingPlan }}">
+                    <StackLayout>
+                        <Label text="📋" class="text-2xl mb-2" />
+                        <Label text="Marketing Plan" class="font-bold" />
+                    </StackLayout>
+                </GridLayout>
+                <GridLayout col="1" row="0" class="bg-white p-4 m-1 rounded-xl elevation-2" tap="{{ onCampaignTracker }}">
+                    <StackLayout>
+                        <Label text="📊" class="text-2xl mb-2" />
+                        <Label text="Track Campaign" class="font-bold" />
+                    </StackLayout>
+                </GridLayout>
+                <GridLayout col="0" row="1" class="bg-white p-4 m-1 rounded-xl elevation-2" tap="{{ onCaseStudies }}">
+                    <StackLayout>
+                        <Label text="📚" class="text-2xl mb-2" />
+                        <Label text="Case Studies" class="font-bold" />
+                    </StackLayout>
+                </GridLayout>
+                <GridLayout col="1" row="1" class="bg-white p-4 m-1 rounded-xl elevation-2" tap="{{ onAnalytics }}">
+                    <StackLayout>
+                        <Label text="📈" class="text-2xl mb-2" />
+                        <Label text="Analytics" class="font-bold" />
+                    </StackLayout>
+                </GridLayout>
+            </GridLayout>
+
+            <!-- Active Challenge -->
+            <Label text="Active Challenge" class="text-lg font-bold mb-4" />
+            <GridLayout class="bg-white p-4 rounded-xl mb-6 elevation-2" rows="auto, auto, auto" tap="{{ onActiveChallenge }}">
+                <Label row="0" text="{{ activeChallenge.title }}" class="font-bold mb-2" />
+                <Label row="1" text="{{ activeChallenge.description }}" class="text-gray-600 mb-3" textWrap="true" />
+                <GridLayout row="2" columns="*, auto">
+                    <Progress col="0" value="{{ activeChallenge.progress }}" maxValue="100" class="m-2" />
+                    <Label col="1" text="{{ activeChallenge.daysLeft }} days left" class="text-blue-600" />
+                </GridLayout>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <BottomNavigation>
+        <TabStrip>
+            <TabStripItem>
+                <Label text="🏠" />
+                <Label text="Home" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="📚" />
+                <Label text="Learn" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="🎯" />
+                <Label text="Goals" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="👥" />
+                <Label text="Community" />
+            </TabStripItem>
+        </TabStrip>
+    </BottomNavigation>
+</Page>

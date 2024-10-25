@@ -1,0 +1,37 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" actionBarHidden="true">
+    <ScrollView>
+        <StackLayout class="p-6">
+            <Label text="Customize Your Experience" class="text-2xl font-bold mb-6" />
+            <Label text="Help us personalize your marketing journey" class="text-gray-600 mb-8" />
+
+            <!-- Business Type -->
+            <Label text="Business Type" class="font-bold mb-2" />
+            <DropDown items="{{ businessTypes }}" selectedIndex="{{ selectedBusinessTypeIndex }}" 
+                class="input-field" />
+
+            <!-- Industry -->
+            <Label text="Industry" class="font-bold mb-2" />
+            <DropDown items="{{ industries }}" selectedIndex="{{ selectedIndustryIndex }}" 
+                class="input-field" />
+
+            <!-- Business Size -->
+            <Label text="Business Size" class="font-bold mb-2" />
+            <DropDown items="{{ businessSizes }}" selectedIndex="{{ selectedBusinessSizeIndex }}" 
+                class="input-field" />
+
+            <!-- Marketing Goals -->
+            <Label text="Marketing Goals (Select all that apply)" class="font-bold mb-2" />
+            <Repeater items="{{ marketingGoals }}">
+                <Repeater.itemTemplate>
+                    <GridLayout columns="auto, *" class="mb-2">
+                        <CheckBox col="0" checked="{{ selected }}" />
+                        <Label col="1" text="{{ name }}" class="ml-2" />
+                    </GridLayout>
+                </Repeater.itemTemplate>
+            </Repeater>
+
+            <Button text="Save &amp; Continue" tap="{{ onSaveAndContinue }}" 
+                class="primary-button mt-8" />
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,48 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" actionBarHidden="true">
+    <ScrollView>
+        <StackLayout class="p-6">
+            <!-- Tabs -->
+            <GridLayout columns="*, *" class="mb-8">
+                <Label col="0" text="Sign In" tap="{{ onTabTap }}" data-tab="signin" 
+                    class="{{ isSignIn ? 'tab-active' : 'tab-inactive' }} p-4 text-center" />
+                <Label col="1" text="Sign Up" tap="{{ onTabTap }}" data-tab="signup" 
+                    class="{{ !isSignIn ? 'tab-active' : 'tab-inactive' }} p-4 text-center" />
+            </GridLayout>
+
+            <!-- Sign In Form -->
+            <StackLayout visibility="{{ isSignIn ? 'visible' : 'collapsed' }}">
+                <TextField hint="Email" text="{{ email }}" keyboardType="email" 
+                    class="input-field" autocorrect="false" autocapitalizationType="none" />
+                <TextField hint="Password" text="{{ password }}" secure="true" 
+                    class="input-field" />
+                <Button text="Sign In" tap="{{ onSignIn }}" class="primary-button mb-4" />
+                <Label text="Forgot Password?" class="text-blue-600 text-center" 
+                    tap="{{ onForgotPassword }}" />
+            </StackLayout>
+
+            <!-- Sign Up Form -->
+            <StackLayout visibility="{{ !isSignIn ? 'visible' : 'collapsed' }}">
+                <TextField hint="Full Name" text="{{ fullName }}" 
+                    class="input-field" autocorrect="false" />
+                <TextField hint="Email" text="{{ email }}" keyboardType="email" 
+                    class="input-field" autocorrect="false" autocapitalizationType="none" />
+                <TextField hint="Password" text="{{ password }}" secure="true" 
+                    class="input-field" />
+                <Button text="Sign Up" tap="{{ onSignUp }}" class="primary-button mb-4" />
+            </StackLayout>
+
+            <!-- Social Login -->
+            <StackLayout class="mt-6">
+                <Label text="Or continue with" class="text-center text-gray-500 mb-4" />
+                <GridLayout columns="*, *, *" class="mb-4">
+                    <Button col="0" text="Google" tap="{{ onGoogleSignIn }}" 
+                        class="mx-2 bg-white elevation-2" />
+                    <Button col="1" text="Facebook" tap="{{ onFacebookSignIn }}" 
+                        class="mx-2 bg-white elevation-2" />
+                    <Button col="2" text="Apple" tap="{{ onAppleSignIn }}" 
+                        class="mx-2 bg-white elevation-2" />
+                </GridLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

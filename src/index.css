@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-in forwards; /* Increased from 1s to 2s */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.pulse {
+  animation: pulse 3s infinite; /* Increased from 2s to 3s */
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.learning-card {
+  @apply bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100;
+}
+
+.learning-card:hover {
+  @apply transform scale-102 border-blue-100;
+}
+
+.section-title {
+  @apply text-2xl font-semibold text-gray-800 mb-4 font-display;
+}
+
+.progress-bar {
+  @apply h-2 rounded-full bg-gray-100 overflow-hidden;
+}
+
+.progress-value {
+  @apply h-full rounded-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500;
+}
+
+.quick-action-card {
+  @apply p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105;
+}
+
+.nav-item {
+  @apply flex flex-col items-center px-3 py-2 rounded-lg transition-colors;
+}
+
+.nav-item-active {
+  @apply text-blue-600 bg-blue-50;
+}
+
+.nav-item-inactive {
+  @apply text-gray-600 hover:bg-gray-50;
+}
